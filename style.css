@@ -1,0 +1,77 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Define Grid Area */
+.header {
+  grid-area: header;
+}
+
+.nav {
+  grid-area: nav;
+}
+
+.main {
+  grid-area: main;
+}
+
+.sidebar {
+  grid-area: sidebar;
+}
+
+.ad {
+  grid-area: ad;
+}
+
+.footer {
+  grid-area: footer;
+}
+
+.grid-item {
+  padding: 10px 20px;
+  background-color: #effa55;
+  border: 1px solid #000000;
+  border-radius: 10px;
+}
+
+.grid-container {
+  max-width: 1000px;
+  margin: 0 auto;
+
+  display: grid;
+  grid-gap: 10px;
+
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: 100px repeat(2, 150px) 100px;
+  grid-template-areas:
+    "header header header header"
+    "nav    main   main   sidebar"
+    "nav    main   main   ad"
+    "footer footer footer footer";
+}
+
+@media screen and (max-width: 768px) and (min-width: 426px) {
+  .nav ul {
+    display: flex;
+    justify-content: space-between;
+  }
+  .grid-container {
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: 100px 50px repeat(2, 150px) 100px;
+    grid-template-areas:
+      "header   header   header"
+      "nav      nav      nav"
+      "sidebar  main     main"
+      "sidebar  main     main"
+      "ad       footer   footer";
+  }
+}
+
+@media only screen and (max-width: 425px) {
+  .grid-container {
+    display: flex;
+    flex-direction: column;
+  }
+}
